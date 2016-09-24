@@ -1,4 +1,5 @@
 # userService
+
 This is the Sample spring rest project which will have the basic User management.
 1.createUser:   Takes input as JSON. Creates the user if he is not already available in the datastore.
 2. getAllUsers:  Gives the list of all users that are in the datastore.
@@ -7,8 +8,6 @@ This is the Sample spring rest project which will have the basic User management
 Frame Works Used: 1. Spring Rest 2. Hibernate. 3. Angular JS 4. BootStrap  
 
 Data Base: MySQL.
-
-
 
 Data Base creation.
 
