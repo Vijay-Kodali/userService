@@ -1,0 +1,16 @@
+     
+        .liceven {
+            background-color: LightBlue;
+            padding: 2px;
+            margin: 3px;
+            border: 2px solid Blue
+        }
+        
+        .licodd {
+            background-color: plum;
+            padding: 2px;
+            margin: 3px;
+            border: 2px solid Blue
+        }
+        
+     

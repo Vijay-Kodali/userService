@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Kodali Services</title>
+      <link href="styles/bootstrap.min.css" rel="stylesheet">
+      <link href="styles/styles.css" rel="stylesheet">
+      <script type="text/javascript" src="scripts/angular.js"></script>
+      <script type="text/javascript" src="scripts/jquery-1.12.4.js"></script>
+      <script type="text/javascript" src="scripts/app.js"></script>
+      <link rel="shortcut icon" href="Images/k.ico">
+   </head>
+   <body ng-app="myApp" class="container">
+      <div ng-controller="UserRestCtrl" data-ng-init="init()">
+         <h2>Manage Users</h2>
+         <table width="400">
+            <tr>
+               <td><input type="button" class="btn btn-info" value="Create" ng-click="mode='create';init()"></td>
+               <td><input type="button" class="btn btn-info" value="Get Users" ng-click="mode='get';init()"></td>
+            </tr>
+            <tr>
+               <td><span>{{message}}</span></td>
+            </tr>
+         </table>
+         <br>
+         <div ng-switch="mode">
+            <div ng-switch-when="get">
+               <table width="50%" height="100%" border="2">
+                  <tr>
+                     <th> First Name
+                     </th>
+                     <th> Last Name 
+                     </th>
+                     <th> Age
+                     </th>
+                     <th> Gender
+                     </th>
+                     <th> Edit User
+                     </th>
+                  </tr>
+                  <tr ng-repeat="item in users" ng-class-even="{liceven:true}" ng-class-odd="{licodd:true}">
+                     <td>{{item.firstName}}</td>
+                     <td>{{item.lastName}}</td>
+                     <td>{{item.age}}</td>
+                     <td>{{item.gender}}</td>
+                     <td><input type="button" value="edit" class="btn btn-success" ng-click="fn_update(item)"></td>
+                  </tr>
+               </table>
+            </div>
+            <div ng-switch-when="create">
+               <form  name="myForm" novalidate>
+                  <p>First Name:<br>
+                     <input type="text" name="firstName" ng-model="user.firstName" required>
+                     <span style="color:red" ng-show="myForm.firstName.$dirty && myForm.firstName.$invalid">
+                     <span ng-show="myForm.firstName.$error.required">First Name is required.</span>
+                     </span>
+                  </p>
+                  <p>Middle Name:<br>
+                     <input type="text" name="midName" ng-model="user.midName">
+                  </p>
+                  <p>Last Name:<br>	
+                     <input type="text" name="lastName" ng-model="user.lastName" required>
+                     <span style="color:red" ng-show="myForm.lastName.$dirty && myForm.lastName.$invalid">
+                     <span ng-show="myForm.lastName.$error.required">Last Name is required.</span>
+                     </span>
+                  </p>
+                  <p>Age:<br>
+                     <input type="number" name="age" ng-model="user.age" required >
+                     <span style="color:red" ng-show="myForm.age.$dirty && myForm.age.$invalid">
+                     <span ng-show="myForm.age.$error.required">Age is required.</span>
+                     </span>
+                  </p>
+                  <p>Geder:<br>
+                     Male<input type="radio" name="gender" value="M" ng-model="user.gender" required >
+                     Female<input type="radio" name="gender" value="F" ng-model="user.gender" required>
+                     <span style="color:red" ng-show="myForm.gender.$dirty && myForm.gender.$invalid">
+                     <span ng-show="myForm.gender.$error.required">Gender is required.</span>
+                     </span>
+                  </p>
+                  <p>Phone:<br>
+                     <input type="number" maxlength="10" name="phone" ng-model="user.phone" required only-digits>
+                     <span style="color:red" ng-show="myForm.phone.$dirty && myForm.phone.$invalid">
+                     <span ng-show="myForm.phone.$error.required">Phone no is required.</span>
+                     </span>
+                  </p>
+                  <p>ZIP:<br>
+                     <input type="text" name="zip" ng-model="user.zip" required>
+                  </p>
+                  <p>
+                     <button class="btn btn-primary" ng-click="fn_create()" ng-disabled="myForm.firstName.$error.required || myForm.lastName.$error.required || myForm.age.$error.required|| myForm.gender.$error.required || myForm.phone.$error.required">Create</button>
+                  </p>
+               </form>
+            </div>
+            <div ng-switch-when="update">
+               <form  name="myForm" novalidate>
+                  <p>User ID<br>
+                     <input type="text" name="id" ng-model="user.id" ng-disabled="true">
+                  </p>
+                  <p>First Name:<br>
+                     <input type="text" name="firstName" ng-model="user.firstName" required>
+                     <span style="color:red" ng-show="myForm.firstName.$dirty && myForm.firstName.$invalid">
+                     <span ng-show="myForm.firstName.$error.required">First Name is required.</span>
+                     </span>
+                  </p>
+                  <p>Middle Name:<br>
+                     <input type="text" name="midName" ng-model="user.midName">
+                  </p>
+                  <p>Last Name:<br>	
+                     <input type="text" name="lastName" ng-model="user.lastName" required>
+                     <span style="color:red" ng-show="myForm.lastName.$dirty && myForm.lastName.$invalid">
+                     <span ng-show="myForm.lastName.$error.required">Last Name is required.</span>
+                     </span>
+                  </p>
+                  <p>Age:<br>
+                     <input type="number" name="age" ng-model="user.age" required>
+                     <span style="color:red" ng-show="myForm.age.$dirty && myForm.age.$invalid">
+                     <span ng-show="myForm.age.$error.required">Age is required.</span>
+                     </span>
+                  </p>
+                  <p>Geder:<br>
+                     Male<input type="radio" name="gender" value="M" ng-model="user.gender" required>
+                     Female<input type="radio" name="gender" value="F" ng-model="user.gender" required>
+                     <span style="color:red" ng-show="myForm.gender.$dirty && myForm.gender.$invalid">
+                     <span ng-show="myForm.gender.$error.required">Gender is required.</span>
+                     </span>
+                  </p>
+                  <p>Phone:<br>
+                     <input type="number" maxlength="10" name="phone" ng-model="user.phone" required>
+                     <span style="color:red" ng-show="myForm.phone.$dirty && myForm.phone.$invalid">
+                     <span ng-show="myForm.phone.$error.required">Phone no is required.</span>
+                     </span>
+                  </p>
+                  <p>ZIP:<br>
+                     <input type="text" name="zip" ng-model="user.zip" required>
+                  </p>
+                  <p>
+                     <button class="btn btn-primary" ng-click="fn_create()" ng-disabled="myForm.firstName.$error.required || myForm.lastName.$error.required || myForm.age.$error.required|| myForm.gender.$error.required || myForm.phone.$error.required">Update</button>
+                  </p>
+               </form>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="USER_LOGGER" class="org.apache.log4j.RollingFileAppender">
+        <param name="file" value="../logs/user.log" />
+        <param name="MaxFileSize" value="50MB" />
+        <param name="MaxBackupIndex" value="10" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS} %p %t %c - %m%n" />
+        </layout>
+    </appender>
+    <root>
+        <priority value="DEBUG" />
+        <appender-ref ref="CONSOLE_LOGGER" />
+    </root>
+    <logger name="org.springframework" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="CONSOLE_LOGGER" />
+    </logger>
+    <logger name="USER_LOGGER" additivity="false">
+        <level value="DEBUG" />
+        <appender-ref ref="USER_LOGGER" />
+    </logger>
+</log4j:configuration>
