@@ -5,7 +5,11 @@ This is the Sample spring rest project which will have the basic User management
 2. getAllUsers:  Gives the list of all users that are in the datastore.
 3 updateUser: Takes input as JSON Finds the user from the data store   
 
-Frame Works Used: 1. Spring Rest 2. Hibernate. 3. Angular JS 4. BootStrap  
+Frame Works Used:
+1. Spring Rest 
+2. Hibernate
+3. Angular JS
+4. BootStrap  
 
 Data Base: MySQL.
 
